@@ -1,0 +1,88 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdepartment |
+| employee      |
+| faculty       |
+| student       |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> where marks between 90 and 99;
++---------+------+------------+-------+-------+--------+
+| name    | dept | adress     | marks | grade | std_id |
++---------+------+------------+-------+-------+--------+
+| supriya | BI   | kadapa     |    99 | A     |      1 |
+| radha   | CSE  | ananthapur |    98 | A     |      1 |
++---------+------+------------+-------+-------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select*from student
+    -> where dept in('CSE');
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
++----------+------+------------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> where marks not between 90 and 99;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select sum(marks)from student
+    -> where dept="CSE";
++------------+
+| sum(marks) |
++------------+
+|        186 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks)as average from student;
++---------+
+| average |
++---------+
+| 90.7500 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks)as minimum from student;
++---------+
+| minimum |
++---------+
+|      78 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks)as maximum from student;
++---------+
+| maximum |
++---------+
+|      99 |
++---------+
+1 row in set (0.00 sec)
+
+mysql>

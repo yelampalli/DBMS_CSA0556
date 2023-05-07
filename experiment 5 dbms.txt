@@ -1,0 +1,123 @@
+mysql> use sse;
+Database changed
+mysql> create table student(name varchar(15),dept char(5),adress char(30),marks int(5),grade char(4));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| dept   | char(5)     | YES  |     | NULL    |       |
+| adress | char(30)    | YES  |     | NULL    |       |
+| marks  | int(5)      | YES  |     | NULL    |       |
+| grade  | char(4)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values ('supriya','BI','kadapa',99,'A');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values('radha','CSE','ananthapur',98,'A');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values('rushitha','CSE','thirupathi',88,'B');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values('poojitha','EEE','nellore',78,'C');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student
+    -> ;
++----------+------+------------+-------+-------+
+| name     | dept | adress     | marks | grade |
++----------+------+------------+-------+-------+
+| supriya  | BI   | kadapa     |    99 | A     |
+| radha    | CSE  | ananthapur |    98 | A     |
+| rushitha | CSE  | thirupathi |    88 | B     |
+| poojitha | EEE  | nellore    |    78 | C     |
++----------+------+------------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> update student;
+    -> add column std_id int(5);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| dept   | char(5)     | YES  |     | NULL    |       |
+| adress | char(30)    | YES  |     | NULL    |       |
+| marks  | int(5)      | YES  |     | NULL    |       |
+| grade  | char(4)     | YES  |     | NULL    |       |
+| std_id | int(5)      | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> update student
+    -> set std_id=1
+    -> where grade='A';
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select*from student
+    -> ;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |   NULL |
+| poojitha | EEE  | nellore    |    78 | C     |   NULL |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> set std_id=2
+    -> where grade='B';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student
+    -> set std_id=3
+    -> where grade='C';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student
+    -> ;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student
+    -> where dept=CSE;
+ERROR 1054 (42S22): Unknown column 'CSE' in 'where clause'
+mysql> select * from student
+    -> where dept='CSE';
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
++----------+------+------------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> where grade='A';
++---------+------+------------+-------+-------+--------+
+| name    | dept | adress     | marks | grade | std_id |
++---------+------+------------+-------+-------+--------+
+| supriya | BI   | kadapa     |    99 | A     |      1 |
+| radha   | CSE  | ananthapur |    98 | A     |      1 |
++---------+------+------------+-------+-------+--------+
+2 rows in set (0.00 sec)

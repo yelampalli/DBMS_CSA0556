@@ -1,0 +1,65 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdepartment |
+| employee      |
+| faculty       |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| id     | int(17)     | NO   | PRI | 0       |       |
+| salary | int(10)     | YES  |     | NULL    |       |
+| gender | varchar(2)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc empdepartment;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(12)     | YES  |     | NULL    |       |
+| deptname | varchar(17) | YES  |     | NULL    |       |
+| rollno   | int(8)      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table empdepartment
+    -> add foreign key(deptid) references employee(id);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc empdepartment;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(12)     | YES  | MUL | NULL    |       |
+| deptname | varchar(17) | YES  |     | NULL    |       |
+| rollno   | int(8)      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> add unique(salary);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| id     | int(17)     | NO   | PRI | 0       |       |
+| salary | int(10)     | YES  | UNI | NULL    |       |
+| gender | varchar(2)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql>

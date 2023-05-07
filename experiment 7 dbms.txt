@@ -1,0 +1,94 @@
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| empdepartment |
+| employee      |
+| faculty       |
+| student       |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> order by adress;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> order by name;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> group by grade;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> group by dept;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
++----------+------+------------+-------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> group by name
+    -> having marks>75;
++----------+------+------------+-------+-------+--------+
+| name     | dept | adress     | marks | grade | std_id |
++----------+------+------------+-------+-------+--------+
+| poojitha | EEE  | nellore    |    78 | C     |      3 |
+| radha    | CSE  | ananthapur |    98 | A     |      1 |
+| rushitha | CSE  | thirupathi |    88 | B     |      2 |
+| supriya  | BI   | kadapa     |    99 | A     |      1 |
++----------+------+------------+-------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select*from student
+    -> having marks>90;
++---------+------+------------+-------+-------+--------+
+| name    | dept | adress     | marks | grade | std_id |
++---------+------+------------+-------+-------+--------+
+| supriya | BI   | kadapa     |    99 | A     |      1 |
+| radha   | CSE  | ananthapur |    98 | A     |      1 |
++---------+------+------------+-------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql>

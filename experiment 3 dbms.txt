@@ -1,0 +1,78 @@
+mysql> use sse;
+Database changed
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| id     | int(17)     | NO   | PRI | 0       |       |
+| salary | int(10)     | YES  | UNI | NULL    |       |
+| gender | varchar(2)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee
+    -> add column adress varchar(20);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(15) | YES  |     | NULL    |       |
+| id     | int(17)     | NO   | PRI | 0       |       |
+| salary | int(10)     | YES  | UNI | NULL    |       |
+| gender | varchar(2)  | YES  |     | NULL    |       |
+| adress | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employee
+    -> values('supriya',198,30000,'f','kadapa');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee
+    -> values('rushith',199,25000,'f','nellore');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee
+    -> values('poojitha',200,20000,'f','ananthapur');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee
+    -> values('rajitha',201,15000,'f','ananthapur');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from employee;
++----------+-----+--------+--------+------------+
+| name     | id  | salary | gender | adress     |
++----------+-----+--------+--------+------------+
+| supriya  | 198 |  30000 | f      | kadapa     |
+| rushith  | 199 |  25000 | f      | nellore    |
+| poojitha | 200 |  20000 | f      | ananthapur |
+| rajitha  | 201 |  15000 | f      | ananthapur |
++----------+-----+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select name from employee;
++----------+
+| name     |
++----------+
+| supriya  |
+| rushith  |
+| poojitha |
+| rajitha  |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select*from employee
+    -> where name="supriya";
++---------+-----+--------+--------+--------+
+| name    | id  | salary | gender | adress |
++---------+-----+--------+--------+--------+
+| supriya | 198 |  30000 | f      | kadapa |
++---------+-----+--------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql>

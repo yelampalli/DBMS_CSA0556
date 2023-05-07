@@ -1,0 +1,62 @@
+mysql> use sse;
+Database changed
+mysql> select*from employee;
++----------+-----+--------+--------+------------+
+| name     | id  | salary | gender | adress     |
++----------+-----+--------+--------+------------+
+| supriya  | 198 |  30000 | f      | kadapa     |
+| rushith  | 199 |  25000 | f      | nellore    |
+| poojitha | 200 |  20000 | f      | ananthapur |
+| rajitha  | 201 |  15000 | f      | ananthapur |
++----------+-----+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set adress="thirupathi"
+    -> where name='rajitha';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++----------+-----+--------+--------+------------+
+| name     | id  | salary | gender | adress     |
++----------+-----+--------+--------+------------+
+| supriya  | 198 |  30000 | f      | kadapa     |
+| rushith  | 199 |  25000 | f      | nellore    |
+| poojitha | 200 |  20000 | f      | ananthapur |
+| rajitha  | 201 |  15000 | f      | thirupathi |
++----------+-----+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee
+    -> set id=197
+    -> where id=198;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++----------+-----+--------+--------+------------+
+| name     | id  | salary | gender | adress     |
++----------+-----+--------+--------+------------+
+| supriya  | 197 |  30000 | f      | kadapa     |
+| rushith  | 199 |  25000 | f      | nellore    |
+| poojitha | 200 |  20000 | f      | ananthapur |
+| rajitha  | 201 |  15000 | f      | thirupathi |
++----------+-----+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from employee
+    -> where name='poojitha';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select*from employee;
++---------+-----+--------+--------+------------+
+| name    | id  | salary | gender | adress     |
++---------+-----+--------+--------+------------+
+| supriya | 197 |  30000 | f      | kadapa     |
+| rushith | 199 |  25000 | f      | nellore    |
+| rajitha | 201 |  15000 | f      | thirupathi |
++---------+-----+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
